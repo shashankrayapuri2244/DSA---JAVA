@@ -1,0 +1,35 @@
+class Solution {
+    int value(char c){
+        if(c=='I')
+            return 1;
+        if(c=='V')
+            return 5;
+        if(c=='X')
+            return 10;
+        if(c=='L')
+            return 50;
+        if(c=='C')
+            return 100;
+        if(c=='D')
+            return 500;
+        if(c=='M')
+            return 1000;
+        else    return 0;
+    }
+    public int romanToInt(String s) {
+        int sum=0;
+        for(int i=0;i<s.length()-1;i++){
+            char ch = s.charAt(i);
+            char n = s.charAt(i+1);
+            if(value(ch)>=value(n)){
+                sum+=value(ch);
+            }else{
+                sum-=value(ch);
+            }
+        }
+        sum+=value(s.charAt(s.length()-1));
+        return sum;
+
+
+    }
+}
